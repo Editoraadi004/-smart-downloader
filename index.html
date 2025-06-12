@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Video Downloader</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      width: 90%;
+      max-width: 500px;
+      border: none;
+      border-radius: 8px;
+    }
+    input {
+      background-color: #fff;
+      color: #000;
+    }
+    button {
+      background-color: #1e90ff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔗 Smart Video Downloader</h1>
+  <input type="text" id="videoUrl" placeholder="Paste your video link here..." />
+  <button onclick="redirect()">Download</button>
+
+  <script>
+    function redirect() {
+      const url = document.getElementById('videoUrl').value.trim();
+      if (!url) {
+        alert("Please enter a valid video URL.");
+        return;
+      }
+
+      if (url.includes("instagram.com")) {
+        window.location.href = "https://igram.io?url=" + encodeURIComponent(url);
+      } else if (url.includes("facebook.com")) {
+        window.location.href = "https://snapsave.app?url=" + encodeURIComponent(url);
+      } else if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        window.location.href = "https://y2mate.mx?url=" + encodeURIComponent(url);
+      } else if (url.includes("tiktok.com")) {
+        window.location.href = "https://ssstik.io/en?url=" + encodeURIComponent(url);
+      } else if (url.includes("x.com") || url.includes("twitter.com")) {
+        window.location.href = "https://twdown.net?url=" + encodeURIComponent(url);
+      } else {
+        alert("Unsupported URL. Please try Instagram, Facebook, YouTube, TikTok, or Twitter.");
+      }
+    }
+  </script>
+</body>
+</html>
