@@ -1,67 +1,77 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart Video Downloader</title>
+  <title>📥 फास्ट व्हिडिओ डाऊनलोडर</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <style>
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
       background-color: #121212;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      padding: 20px;
-    }
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-      margin: 10px 0;
-      width: 90%;
-      max-width: 500px;
-      border: none;
-      border-radius: 8px;
-    }
-    input {
-      background-color: #fff;
-      color: #000;
-    }
-    button {
-      background-color: #1e90ff;
       color: white;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #1e1e1e;
+      border-bottom: 1px solid #333;
+    }
+    nav button {
+      padding: 15px 20px;
+      background-color: transparent;
+      color: white;
+      border: none;
+      font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+    nav button:hover,
+    nav button.active {
+      background-color: #333;
+    }
+    iframe {
+      width: 100vw;
+      height: calc(100vh - 90px);
+      border: none;
+    }
+    header {
+      text-align: center;
+      padding: 10px;
+      font-size: 22px;
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #333;
     }
   </style>
 </head>
 <body>
-  <h1>🔗 Smart Video Downloader</h1>
-  <input type="text" id="videoUrl" placeholder="Paste your video link here..." />
-  <button onclick="redirect()">Download</button>
+  <header>📥 फास्ट व्हिडिओ डाऊनलोडर – इंस्टाग्राम | फेसबुक | ट्विटर</header>
+  <nav>
+    <button onclick="show('insta')" id="btn-insta" class="active">इंस्टाग्राम</button>
+    <button onclick="show('fb')" id="btn-fb">फेसबुक</button>
+    <button onclick="show('twitter')" id="btn-twitter">ट्विटर</button>
+  </nav>
+
+  <iframe id="iframe" src="https://snapinsta.app"></iframe>
 
   <script>
-    function redirect() {
-      const url = document.getElementById('videoUrl').value.trim();
-      if (!url) {
-        alert("Please enter a valid video URL.");
-        return;
-      }
+    function show(platform) {
+      let iframe = document.getElementById('iframe');
+      document.getElementById('btn-insta').classList.remove('active');
+      document.getElementById('btn-fb').classList.remove('active');
+      document.getElementById('btn-twitter').classList.remove('active');
 
-      if (url.includes("instagram.com")) {
-        window.location.href = "https://igram.io?url=" + encodeURIComponent(url);
-      } else if (url.includes("facebook.com")) {
-        window.location.href = "https://snapsave.app?url=" + encodeURIComponent(url);
-      } else if (url.includes("youtube.com") || url.includes("youtu.be")) {
-        window.location.href = "https://y2mate.mx?url=" + encodeURIComponent(url);
-      } else if (url.includes("tiktok.com")) {
-        window.location.href = "https://ssstik.io/en?url=" + encodeURIComponent(url);
-      } else if (url.includes("x.com") || url.includes("twitter.com")) {
-        window.location.href = "https://twdown.net?url=" + encodeURIComponent(url);
-      } else {
-        alert("Unsupported URL. Please try Instagram, Facebook, YouTube, TikTok, or Twitter.");
+      if (platform === 'insta') {
+        iframe.src = 'https://snapinsta.app';
+        document.getElementById('btn-insta').classList.add('active');
+      } else if (platform === 'fb') {
+        iframe.src = 'https://fdown.net';
+        document.getElementById('btn-fb').classList.add('active');
+      } else if (platform === 'twitter') {
+        iframe.src = 'https://ssstwitter.com';
+        document.getElementById('btn-twitter').classList.add('active');
       }
     }
   </script>
