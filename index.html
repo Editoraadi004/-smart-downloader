@@ -2,78 +2,62 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>📥 फास्ट व्हिडिओ डाऊनलोडर</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <title>फास्ट व्हिडिओ डाउनलोडर – इंस्टाग्राम | फेसबुक | ट्विटर</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
       background-color: #121212;
       color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
     }
-    nav {
+    .header {
+      background: #000;
+      padding: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .tabs {
       display: flex;
       justify-content: center;
-      background-color: #1e1e1e;
-      border-bottom: 1px solid #333;
+      background: #222;
     }
-    nav button {
-      padding: 15px 20px;
-      background-color: transparent;
+    .tabs button {
+      background: #333;
       color: white;
       border: none;
-      font-size: 16px;
+      padding: 10px 20px;
       cursor: pointer;
-      transition: background 0.3s;
+      font-size: 16px;
     }
-    nav button:hover,
-    nav button.active {
-      background-color: #333;
+    .tabs button.active {
+      background: #555;
     }
-    iframe {
-      width: 100vw;
-      height: calc(100vh - 90px);
+    .content iframe {
+      width: 100%;
+      height: 90vh;
       border: none;
     }
-    header {
-      text-align: center;
-      padding: 10px;
-      font-size: 22px;
-      background-color: #1a1a1a;
-      border-bottom: 1px solid #333;
-    }
   </style>
-</head>
-<body>
-  <header>📥 फास्ट व्हिडिओ डाऊनलोडर – इंस्टाग्राम | फेसबुक | ट्विटर</header>
-  <nav>
-    <button onclick="show('insta')" id="btn-insta" class="active">इंस्टाग्राम</button>
-    <button onclick="show('fb')" id="btn-fb">फेसबुक</button>
-    <button onclick="show('twitter')" id="btn-twitter">ट्विटर</button>
-  </nav>
-
-  <iframe id="iframe" src="https://snapinsta.app"></iframe>
-
   <script>
-    function show(platform) {
-      let iframe = document.getElementById('iframe');
-      document.getElementById('btn-insta').classList.remove('active');
-      document.getElementById('btn-fb').classList.remove('active');
-      document.getElementById('btn-twitter').classList.remove('active');
-
-      if (platform === 'insta') {
-        iframe.src = 'https://snapinsta.app';
-        document.getElementById('btn-insta').classList.add('active');
-      } else if (platform === 'fb') {
-        iframe.src = 'https://fdown.net';
-        document.getElementById('btn-fb').classList.add('active');
-      } else if (platform === 'twitter') {
-        iframe.src = 'https://ssstwitter.com';
-        document.getElementById('btn-twitter').classList.add('active');
-      }
+    function openTab(tabName) {
+      document.getElementById("frame").src = tabName;
+      const buttons = document.querySelectorAll(".tabs button");
+      buttons.forEach(btn => btn.classList.remove("active"));
+      document.getElementById(tabName).classList.add("active");
     }
   </script>
+</head>
+<body>
+  <div class="header">📥 फास्ट व्हिडिओ डाउनलोडर – इंस्टाग्राम | फेसबुक | ट्विटर</div>
+  <div class="tabs">
+    <button id="https://snapinsta.app/" class="active" onclick="openTab('https://snapinsta.app/')">इंस्टाग्राम</button>
+    <button id="https://www.downloadgram.org/" onclick="openTab('https://www.downloadgram.org/')">फेसबुक</button>
+    <button id="https://www.videodownloader.ai/" onclick="openTab('https://www.videodownloader.ai/')">ट्विटर</button>
+  </div>
+  <div class="content">
+    <iframe id="frame" src="https://snapinsta.app/"></iframe>
+  </div>
 </body>
 </html>
